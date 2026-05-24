@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lectures · SOC-330</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .reading-list { list-style: none; padding: 0; }
+    .reading-item {
+      display: flex;
+      gap: 14px;
+      padding: 12px 16px;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+      transition: background 0.2s;
+    }
+    .reading-item:last-child { border-bottom: none; }
+    .reading-item:hover { background: var(--bg-3); border-radius: var(--radius); }
+    .reading-item .type {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      padding: 3px 8px;
+      border-radius: 2px;
+      white-space: nowrap;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .type-obligatoire { color: var(--cyan); background: var(--cyan-dim); border: 1px solid var(--border-2); }
+    .type-optionnel   { color: var(--text-3); background: var(--bg-3); border: 1px solid var(--border); }
+    .type-complement  { color: var(--orange); background: var(--orange-dim); border: 1px solid rgba(251,146,60,0.2); }
+    .reading-info h4  { font-size: 14px; font-weight: 600; color: var(--text); margin-bottom: 3px; }
+    .reading-info p   { font-size: 13px; color: var(--text-2); }
+    .reading-info .auteur { color: var(--text-3); font-size: 12px; margin-top: 2px; font-style: italic; }
+    .reading-info a { font-size: 12px; font-family: var(--font-mono); color: var(--cyan); margin-top: 4px; display: inline-block; }
+
+    .filter-group { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .filter-btn {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      padding: 5px 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      background: var(--bg-2);
+      color: var(--text-2);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .filter-btn:hover { border-color: var(--border-2); color: var(--cyan); }
+    .filter-btn.active { border-color: var(--border-2); color: var(--cyan); background: var(--cyan-dim); }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-brand">
+        <span class="code">330-910 · Collégial</span>
+        <span class="name">Sociologie</span>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html">Accueil</a>
+        <a href="lectures.html" class="active">Lectures</a>
+        <a href="devoirs.html">Devoirs</a>
+        <a href="ateliers.html">Ateliers</a>
+        <a href="references.html">Références</a>
+        <a href="liens.html">Liens</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="label">Matériel de cours</div>
+    <h1>Lectures &amp; <span>textes</span></h1>
+    <p>Les lectures obligatoires sont à compléter avant le cours indiqué. Les textes complémentaires enrichissent la compréhension des thèmes abordés.</p>
+    <div class="divider"></div>
+  </div>
+
+  <!-- LÉGENDE & FILTRE -->
+  <div class="section" style="padding-top: 0; padding-bottom: 0;">
+    <div class="filter-group">
+      <button class="filter-btn active" data-filter="all">Tous les textes</button>
+      <button class="filter-btn" data-filter="obligatoire">Obligatoires</button>
+      <button class="filter-btn" data-filter="complement">Complémentaires</button>
+      <button class="filter-btn" data-filter="optionnel">Facultatifs</button>
+    </div>
+    <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 24px;">
+      <span style="font-size: 12px; color: var(--text-2); display: flex; gap: 8px; align-items: center;">
+        <span class="badge badge-cyan">OBLIGATOIRE</span> À lire impérativement avant le cours
+      </span>
+      <span style="font-size: 12px; color: var(--text-2); display: flex; gap: 8px; align-items: center;">
+        <span class="badge badge-orange">COMPLÉMENT</span> Fortement recommandé
+      </span>
+    </div>
+  </div>
+
+  <!-- MODULE 1 -->
+  <div class="section" style="padding-top: 0;">
+
+    <div class="module">
+      <div class="module-header">
+        <span class="module-num">MODULE 01</span>
+        <span class="module-title">L'imaginaire sociologique</span>
+      </div>
+      <div class="card">
+        <ul class="reading-list">
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>L'imagination sociologique — Extraits (chap. 1 et 2)</h4>
+              <p>Introduction fondatrice à la « promesse » de la sociologie et à la distinction entre tourments personnels et enjeux sociaux.</p>
+              <p class="auteur">C. Wright Mills (1959) · Distribué en classe</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>Qu'est-ce que la sociologie? — Introduction</h4>
+              <p>Panorama des origines de la discipline et de ses objets d'étude. Définitions de la sociologie et de son rapport aux sciences voisines.</p>
+              <p class="auteur">Extrait du manuel de cours · Disponible sur Léa</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="complement">
+            <span class="type type-complement">COMPLÉMENT</span>
+            <div class="reading-info">
+              <h4>Peter Berger — Invitation à la sociologie (chap. 1)</h4>
+              <p>Une introduction vivante au regard sociologique : voir le monde autrement, au-delà des évidences.</p>
+              <p class="auteur">Berger, P.L. (1963) · Médiathèque du cégep</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="optionnel">
+            <span class="type type-optionnel">FACULTATIF</span>
+            <div class="reading-info">
+              <h4>Les règles de la méthode sociologique — Préface</h4>
+              <p>Durkheim pose les bases du fait social et de l'approche scientifique de la sociologie.</p>
+              <p class="auteur">Émile Durkheim (1895) · Disponible en ligne (domaine public)</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MODULE 2 -->
+    <div class="module">
+      <div class="module-header">
+        <span class="module-num">MODULE 02</span>
+        <span class="module-title">Culture et socialisation</span>
+      </div>
+      <div class="card">
+        <ul class="reading-list">
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>Culture et société — Concepts fondamentaux</h4>
+              <p>Définitions de la culture, des normes, des valeurs et des symboles. La diversité culturelle et l'ethnocentrisme.</p>
+              <p class="auteur">Extrait du manuel · Disponible sur Léa</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>La socialisation : devenir membre de la société</h4>
+              <p>Socialisation primaire (famille) et secondaire (école, pairs, médias). La construction sociale de l'identité.</p>
+              <p class="auteur">Berger &amp; Luckmann (1966) — extraits · Distribué en classe</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="complement">
+            <span class="type type-complement">COMPLÉMENT</span>
+            <div class="reading-info">
+              <h4>Les héritiers — Introduction</h4>
+              <p>Bourdieu et Passeron montrent comment la culture scolaire favorise les enfants des classes privilégiées.</p>
+              <p class="auteur">Bourdieu &amp; Passeron (1964) · Médiathèque</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="complement">
+            <span class="type type-complement">COMPLÉMENT</span>
+            <div class="reading-info">
+              <h4>La fabrique des garçons : sanctions et genre au collège</h4>
+              <p>Comment les institutions scolaires participent à la construction des identités de genre.</p>
+              <p class="auteur">Faure, S. et al. (2016) · PDF disponible sur Léa</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MODULE 3 -->
+    <div class="module">
+      <div class="module-header">
+        <span class="module-num">MODULE 03</span>
+        <span class="module-title">Inégalités et stratification sociale</span>
+      </div>
+      <div class="card">
+        <ul class="reading-list">
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>Classes sociales et stratification — Vue d'ensemble</h4>
+              <p>Les approches marxiste (classe), wébérienne (statut/parti) et fonctionnaliste des inégalités sociales.</p>
+              <p class="auteur">Extrait du manuel · Disponible sur Léa</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>L'état de la pauvreté au Québec</h4>
+              <p>Rapport statistique sur les inégalités de revenus et les conditions de vie au Québec. Analyse des indicateurs sociaux récents.</p>
+              <p class="auteur">IRIS (2024) · Disponible en ligne</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>Le genre comme rapport social</h4>
+              <p>Introduction aux concepts de genre, de sexe social et de patriarcat. Les inégalités de genre dans le marché du travail québécois.</p>
+              <p class="auteur">Extrait du manuel · PDF sur Léa</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="complement">
+            <span class="type type-complement">COMPLÉMENT</span>
+            <div class="reading-info">
+              <h4>La distinction — Extraits (Introduction et conclusion)</h4>
+              <p>Bourdieu analyse comment les goûts et pratiques culturelles reproduisent les hiérarchies sociales.</p>
+              <p class="auteur">Bourdieu, P. (1979) · Médiathèque du cégep</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MODULE 4 -->
+    <div class="module">
+      <div class="module-header">
+        <span class="module-num">MODULE 04</span>
+        <span class="module-title">Institutions et organisations</span>
+      </div>
+      <div class="card">
+        <ul class="reading-list">
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>La famille au Québec : transformations et enjeux</h4>
+              <p>Évolution des structures familiales depuis les années 1960. Divorce, recomposition, monoparentalité et nouvelles formes de parentalité.</p>
+              <p class="auteur">Extrait du manuel · Disponible sur Léa</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>L'éthique protestante et l'esprit du capitalisme — Extraits</h4>
+              <p>Weber explore le lien entre culture religieuse, rationalisation économique et capitalisme moderne.</p>
+              <p class="auteur">Weber, M. (1905) · Distribué en classe</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="complement">
+            <span class="type type-complement">COMPLÉMENT</span>
+            <div class="reading-info">
+              <h4>Le travail à l'ère numérique : ubérisation et précarité</h4>
+              <p>Comment les plateformes numériques transforment les rapports de travail et fragilisent les protections sociales.</p>
+              <p class="auteur">Revue Relations (2022) · PDF sur Léa</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- MODULE 5 -->
+    <div class="module">
+      <div class="module-header">
+        <span class="module-num">MODULE 05</span>
+        <span class="module-title">Changements sociaux et enjeux contemporains</span>
+      </div>
+      <div class="card">
+        <ul class="reading-list">
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>Mouvements sociaux et changement</h4>
+              <p>Théories des mouvements sociaux : mobilisation des ressources, opportunités politiques, cadrage culturel. Études de cas québécois.</p>
+              <p class="auteur">Extrait du manuel · Disponible sur Léa</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="obligatoire">
+            <span class="type type-obligatoire">OBLIGATOIRE</span>
+            <div class="reading-info">
+              <h4>La société en réseau — Introduction</h4>
+              <p>Castells analyse comment les technologies de l'information transforment les structures sociales, économiques et politiques mondiales.</p>
+              <p class="auteur">Castells, M. (1996) — extraits · Médiathèque</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="complement">
+            <span class="type type-complement">COMPLÉMENT</span>
+            <div class="reading-info">
+              <h4>Sociologie de la crise climatique : inégalités environnementales</h4>
+              <p>Comment les catastrophes environnementales frappent inégalement selon la classe, le genre et l'origine ethnique.</p>
+              <p class="auteur">Article de revue · PDF sur Léa</p>
+            </div>
+          </li>
+          <li class="reading-item" data-category="optionnel">
+            <span class="type type-optionnel">FACULTATIF</span>
+            <div class="reading-info">
+              <h4>Zygmunt Bauman — La vie liquide</h4>
+              <p>La modernité liquide comme métaphore de nos sociétés : instabilité des identités, des liens et des institutions.</p>
+              <p class="auteur">Bauman, Z. (2006) · Médiathèque du cégep</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="left">
+        <strong>Sociologie : sociétés, organisations et individus</strong><br>
+        330-910 · F. Lajoie-Gravelle · [Nom du Cégep]
+      </div>
+      <div class="right">
+        Session Automne 2026<br>
+        Mis à jour le 24 mai 2026
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Devoirs · SOC-330</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .consignes {
+      background: var(--bg-3);
+      border-left: 2px solid var(--cyan);
+      padding: 14px 18px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-size: 14px;
+      color: var(--text-2);
+      margin: 12px 0;
+    }
+    .consignes strong {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .grille {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 8px;
+    }
+    .grille th {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      padding: 6px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border-2);
+    }
+    .grille td {
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .grille tr:last-child td { border-bottom: none; }
+    .grille .pct {
+      font-family: var(--font-mono);
+      color: var(--cyan);
+      font-weight: 700;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-brand">
+        <span class="code">330-910 · Collégial</span>
+        <span class="name">Sociologie</span>
+      </div>
+      <nav class="site-nav">
+        <a href="index.html">Accueil</a>
+        <a href="lectures.html">Lectures</a>
+        <a href="devoirs.html" class="active">Devoirs</a>
+        <a href="ateliers.html">Ateliers</a>
+        <a href="references.html">Références</a>
+        <a href="liens.html">Liens</a>
+      </nav>
+      <button class="nav-toggle" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <div class="label">Évaluations</div>
+    <h1>Travaux &amp; <span>devoirs</span></h1>
+    <p>Consignes détaillées pour chaque travail évalué. Lisez attentivement chaque devoir avant de commencer. En cas de question, communiquez avec votre professeur·e.</p>
+    <div class="divider"></div>
+  </div>
+
+  <!-- CALENDRIER RAPIDE -->
+  <div class="section" style="padding-top: 0;">
+    <div class="section-label">Vue d'ensemble</div>
+    <div class="section-title">Calendrier des remises</div>
+    <div class="section-subtitle">Dates importantes à noter dans votre agenda</div>
+
+    <div class="card">
+      <table class="eval-table">
+        <thead>
+          <tr>
+            <th>Travail</th>
+            <th>Date de remise</th>
+            <th>Modalité</th>
+            <th>%</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong style="color: var(--text);">Analyse sociologique 1</strong></td>
+            <td style="font-family: var(--font-mono); color: var(--orange); font-size: 13px;">[Date — sem. 5]</td>
+            <td style="font-size: 13px; color: var(--text-2);">Dépôt sur Léa, avant 23h59</td>
+            <td class="pct">20%</td>
+          </tr>
+          <tr>
+            <td><strong style="color: var(--text);">Examen mi-session</strong></td>
+            <td style="font-family: var(--font-mono); color: var(--orange); font-size: 13px;">[Date — sem. 8]</td>
+            <td style="font-size: 13px; color: var(--text-2);">En classe, durée 1h30</td>
+            <td class="pct">15%</td>
+          </tr>
+          <tr>
+            <td><strong style="color: var(--text);">Analyse sociologique 2</strong></td>
+            <td style="font-family: var(--font-mono); color: var(--orange); font-size: 13px;">[Date — sem. 12]</td>
+            <td style="font-size: 13px; color: var(--text-2);">Dépôt sur Léa, avant 23h59</td>
+            <td class="pct">25%</td>
+          </tr>
+          <tr>
+            <td><strong style="color: var(--text);">Ateliers (×5)</strong></td>
+            <td style="font-family: var(--font-mono); color: var(--orange); font-size: 13px;">Tout au long de la session</td>
+            <td style="font-size: 13px; color: var(--text-2);">Remis en classe le jour même</td>
+            <td class="pct">20%</td>
+          </tr>
+          <tr>
+            <td><strong style="color: var(--text);">Examen final</strong></td>
+            <td style="font-family: var(--font-mono); color: var(--orange); font-size: 13px;">[Date — sem. 15 ou examen]</td>
+            <td style="font-size: 13px; color: var(--text-2);">En classe, durée 2h</td>
+            <td class="pct">20%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- DEVOIR 1 -->
+  <div class="section">
+    <div class="section-label">Travail écrit</div>
+    <div class="section-title">Analyse sociologique 1</div>
+    <div class="section-subtitle">Modules 1 et 2 · 20% de la note finale</div>
+
+    <div class="devoir-card">
+      <div class="devoir-header">
+        <div class="devoir-title">Appliquer le regard sociologique à un fait social</div>
+        <div class="devoir-meta">
+          <span class="badge badge-cyan">20%</span>
+          <span class="badge badge-orange">~800 mots</span>
+          <span class="badge badge-green">Individuel</span>
+        </div>
+      </div>
+      <div class="devoir-body">
+        <p><strong style="color: var(--text);">Consigne générale :</strong> Choisissez un phénomène social de votre vie quotidienne (pratique culturelle, fait divers, tendance observée dans votre entourage, etc.) et analysez-le à l'aide d'au moins <strong style="color: var(--cyan);">deux concepts sociologiques</strong> vus dans les modules 1 et 2.</p>
+
+        <div class="consignes">
+          <strong>Éléments obligatoires</strong>
+          <ul>
+            <li>Introduction : présenter le phénomène choisi et expliquer pourquoi il est pertinent sociologiquement</li>
+            <li>Développement : mobiliser deux concepts du cours (ex. : socialisation, norme sociale, culture, fait social, imaginaire sociologique)</li>
+            <li>Montrer en quoi l'approche sociologique diffère du sens commun pour ce phénomène</li>
+            <li>Conclusion : synthèse et ouverture sur un questionnement plus large</li>
+            <li>Au moins une référence bibliographique (lecture du cours ou autre source académique)</li>
+          </ul>
+        </div>
+
+        <table class="grille">
+          <thead>
+            <tr><th>Critère d'évaluation</th><th>Points</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Pertinence du phénomène choisi et clarté de la mise en contexte</td><td class="pct">/4</td></tr>
+            <tr><td>Exactitude et profondeur de l'utilisation des concepts sociologiques</td><td class="pct">/8</td></tr>
+            <tr><td>Distinction sens commun / regard sociologique</td><td class="pct">/4</td></tr>
+            <tr><td>Qualité de la rédaction et structure du texte</td><td class="pct">/4</td></tr>
+            <tr><td style="font-weight: 700; color: var(--text);">Total</td><td class="pct">/20</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="devoir-footer">
+        <span>Remise individuelle · Dépôt sur Léa (PDF ou DOCX)</span>
+        <span class="due">⏰ Remise : [Date — semaine 5] avant 23h59</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAMEN MI-SESSION -->
+  <div class="section">
+    <div class="section-label">Examen</div>
+    <div class="section-title">Examen de mi-session</div>
+    <div class="section-subtitle">Modules 1 à 3 · 15% de la note finale</div>
+
+    <div class="devoir-card orange">
+      <div class="devoir-header">
+        <div class="devoir-title">Examen écrit en classe</div>
+        <div class="devoir-meta">
+          <span class="badge badge-cyan">15%</span>
+          <span class="badge badge-orange">1h30</span>
+          <span class="badge badge-green">En classe</span>
+        </div>
+      </div>
+      <div class="devoir-body">
+        <p>L'examen de mi-session porte sur les trois premiers modules du cours. Il évalue votre compréhension des concepts fondamentaux et votre capacité à les appliquer.</p>
+
+        <div class="consignes">
+          <strong>Format de l'examen</strong>
+          <ul>
+            <li>Questions à choix multiples (QCM) sur les concepts clés</li>
+            <li>Questions à réponses courtes (définitions et exemples)</li>
+            <li>Une question de développement courte (un paragraphe structuré)</li>
+            <li>Documents permis : aucun · Notes de cours non autorisées</li>
+          </ul>
+        </div>
+
+        <div class="consignes" style="border-left-color: var(--orange);">
+          <strong>Matière à l'étude</strong>
+          <ul>
+            <li>Module 1 : Imagination sociologique, fait social, sens commun vs sociologie</li>
+            <li>Module 2 : Culture, normes, valeurs, socialisation primaire et secondaire</li>
+            <li>Module 3 : Classes sociales, stratification, inégalités de genre</li>
+            <li>Auteurs principaux : Durkheim, Mills, Berger, Bourdieu</li>
+          </ul>
+        </div>
+      </div>
+      <div class="devoir-footer">
+        <span>Aucun document permis · Stylo obligatoire</span>
+        <span class="due">⏰ Date : [Date — semaine 8] en classe</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEVOIR 2 -->
+  <div class="section">
+    <div class="section-label">Travail écrit</div>
+    <div class="section-title">Analyse sociologique 2</div>
+    <div class="section-subtitle">Modules 3 et 4 · 25% de la note finale</div>
+
+    <div class="devoir-card">
+      <div class="devoir-header">
+        <div class="devoir-title">Analyse d'une inégalité sociale au Québec</div>
+        <div class="devoir-meta">
+          <span class="badge badge-cyan">25%</span>
+          <span class="badge badge-orange">~1200 mots</span>
+          <span class="badge badge-green">Individuel</span>
+        </div>
+      </div>
+      <div class="devoir-body">
+        <p><strong style="color: var(--text);">Consigne générale :</strong> À partir d'une inégalité sociale observable au Québec (inégalités de revenu, inégalités de genre, discrimination raciale, inégalités scolaires, etc.), rédigez une analyse sociologique mobilisant les outils conceptuels des modules 3 et 4.</p>
+
+        <div class="consignes">
+          <strong>Structure attendue</strong>
+          <ul>
+            <li><strong style="color: var(--text);">Introduction :</strong> Présentation de l'inégalité choisie et de sa pertinence sociale actuelle (données statistiques bienvenues)</li>
+            <li><strong style="color: var(--text);">Développement 1 :</strong> Description sociologique de l'inégalité (qui est touché? dans quelle mesure?)</li>
+            <li><strong style="color: var(--text);">Développement 2 :</strong> Analyse des mécanismes sociaux qui produisent et reproduisent cette inégalité</li>
+            <li><strong style="color: var(--text);">Développement 3 :</strong> Liens avec une institution sociale (famille, école, travail, etc.)</li>
+            <li><strong style="color: var(--text);">Conclusion :</strong> Réflexion critique et pistes de transformation sociale</li>
+            <li>Minimum 3 références académiques (voir section Références)</li>
+          </ul>
+        </div>
+
+        <table class="grille">
+          <thead>
+            <tr><th>Critère d'évaluation</th><th>Points</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Identification et mise en contexte de l'inégalité</td><td class="pct">/5</td></tr>
+            <tr><td>Qualité de l'analyse sociologique (concepts, théories)</td><td class="pct">/10</td></tr>
+            <tr><td>Lien avec une institution sociale</td><td class="pct">/5</td></tr>
+            <tr><td>Qualité des sources et de la citation (normes APA)</td><td class="pct">/5</td></tr>
+            <tr><td>Qualité de la rédaction, structure et cohérence</td><td class="pct">/5</td></tr>
+            <tr><td style="font-weight: 700; color: var(--text);">Total</td><td class="pct">/30</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="devoir-footer">
+        <span>Remise individuelle · Normes APA obligatoires · PDF ou DOCX</span>
+        <span class="due">⏰ Remise : [Date — semaine 12] avant 23h59</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- EXAMEN FINAL -->
+  <div class="section">
+    <div class="section-label">Examen</div>
+    <div class="section-title">Examen final</div>
+    <div class="section-subtitle">Ensemble de la session · 20% de la note finale</div>
+
+    <div class="devoir-card green">
+      <div class="devoir-header">
+        <div class="devoir-title">Examen synthèse — ensemble de la session</div>
+        <div class="devoir-meta">
+          <span class="badge badge-cyan">20%</span>
+          <span class="badge badge-orange">2h</span>
+          <span class="badge badge-green">En classe</span>
+        </div>
+      </div>
+      <div class="devoir-body">
+        <p>L'examen final est synthèse : il porte sur l'ensemble des cinq modules et vise à évaluer votre capacité à mettre en relation des concepts vus tout au long de la session.</p>
+
+        <div class="consignes">
+          <strong>Format de l'examen</strong>
+          <ul>
+            <li>Questions à choix multiples (portée sur toute la session)</li>
+            <li>Questions à développement moyen (2 à 3 paragraphes)</li>
+            <li>Analyse d'un document sociologique (extrait de texte ou données)</li>
+            <li>Documents permis : une feuille aide-mémoire recto-verso (manuscrite)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="devoir-footer">
+        <span>Une feuille aide-mémoire permise · Stylo obligatoire</span>
+        <span class="due">⏰ Date : [Date de la période des examens finaux]</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- POLITIQUE -->
+  <div class="section">
+    <div class="section-label">Politique</div>
+    <div class="section-title">Règles et politiques</div>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="card-tag orange">Retards</div>
+        <h2>Politique de remise en retard</h2>
+        <p>Toute remise en retard entraîne une pénalité de <strong style="color: var(--orange);">10% par jour calendrier</strong>, jusqu'à un maximum de 50%. Aucune remise acceptée après 5 jours.</p>
+        <p style="margin-top: 8px;">En cas de circonstance exceptionnelle, communiquez <em>avant</em> la date de remise.</p>
+      </div>
+      <div class="card">
+        <div class="card-tag">Intégrité académique</div>
+        <h2>Plagiat et IA générative</h2>
+        <p>Tout travail doit être rédigé par l'étudiant·e. Le plagiat entraîne la note 0 et un signalement à la direction. L'utilisation d'IA générative pour rédiger le travail est <strong style="color: var(--red);">interdite</strong> sauf indication contraire explicite.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="left">
+        <strong>Sociologie : sociétés, organisations et individus</strong><br>
+        330-910 · F. Lajoie-Gravelle · [Nom du Cégep]
+      </div>
+      <div class="right">
+        Session Automne 2026<br>
+        Mis à jour le 24 mai 2026
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
