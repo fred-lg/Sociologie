@@ -6,8 +6,117 @@
   <title>387-SCE-HY · Sociologie : sociétés, organisations et individus</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* ── CAROUSEL HOMEPAGE ── */
+    .acc-home-wrap {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .acc-home-slides {
+      display: flex;
+      transition: transform 0.7s cubic-bezier(.77,0,.18,1);
+    }
+    .acc-home-card {
+      min-width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .acc-home-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .acc-home-frame::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.08'/%3E%3C/svg%3E");
+      background-size: 180px; opacity: 0.4; z-index: 10; pointer-events: none;
+    }
+    .ah-bord-out { position:absolute; inset:2%;   border:1.5px solid; z-index:5; pointer-events:none; }
+    .ah-bord-in  { position:absolute; inset:3.5%; border:0.5px solid; z-index:5; pointer-events:none; }
+    .ah-corner { position:absolute; width:5%; aspect-ratio:1; z-index:6; }
+    .ah-corner svg { width:100%; height:100%; }
+    .ah-c-tl { top:1.5%;    left:1.5%; }
+    .ah-c-tr { top:1.5%;    right:1.5%; transform:scaleX(-1); }
+    .ah-c-bl { bottom:1.5%; left:1.5%; transform:scaleY(-1); }
+    .ah-c-br { bottom:1.5%; right:1.5%; transform:scale(-1,-1); }
+    .ah-rule-top {
+      position:absolute; top:5%; left:50%; transform:translateX(-50%);
+      display:flex; align-items:center; gap:6px; z-index:7;
+    }
+    .ah-rl { width:clamp(30px,7%,60px); height:0.5px; }
+    .ah-rd { width:5px; height:5px; transform:rotate(45deg); }
+    .ah-rt { font-size:clamp(7px,1vw,9px); letter-spacing:3px; text-transform:uppercase; white-space:nowrap; font-family:'Space Mono',monospace; }
+    .ah-side {
+      position:absolute; left:4%; top:50%; transform:translateY(-50%) rotate(180deg);
+      font-size:clamp(6px,0.9vw,8px); letter-spacing:3px; text-transform:uppercase;
+      writing-mode:vertical-lr; opacity:0.4; z-index:7; font-family:'Cormorant Garamond',serif;
+    }
+    .ah-side-r { left:auto; right:4%; transform:translateY(-50%); }
+    .ah-bg-geo { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; z-index:1; }
+    .ah-bg-geo svg { width:55%; height:55%; }
+    .ah-content { position:relative; z-index:8; text-align:center; padding:0 12%; }
+    .ah-eyebrow  { font-size:clamp(7px,1vw,10px); letter-spacing:4px; text-transform:uppercase; margin-bottom:clamp(8px,1.5%,18px); font-family:'Space Mono',monospace; }
+    .ah-pre      { font-family:'Playfair Display',serif; font-size:clamp(11px,1.8vw,16px); font-style:italic; opacity:0.55; margin-bottom:3px; }
+    .ah-main     { font-family:'Playfair Display',serif; line-height:1.05; }
+    .ah-xl  { font-size:clamp(22px,5.5vw,48px); font-weight:900; }
+    .ah-lg  { font-size:clamp(19px,4.5vw,40px); font-weight:900; }
+    .ah-ia  { font-weight:400; font-style:italic; }
+    .ah-divider { display:flex; align-items:center; justify-content:center; gap:10px; margin:clamp(6px,1.2%,14px) 0; }
+    .ah-dl  { flex:1; height:0.5px; }
+    .ah-dl.l { background:linear-gradient(to right, transparent, currentColor); }
+    .ah-dl.r { background:linear-gradient(to left, transparent, currentColor); }
+    .ah-orn  { font-size:clamp(10px,1.6vw,15px); }
+    .ah-sub  { font-family:'Cormorant Garamond',serif; font-size:clamp(10px,1.4vw,13px); font-style:italic; opacity:0.5; line-height:1.6; }
+
+    /* Themes */
+    .aht1 .acc-home-frame { background:#f5edd8; } .aht1 .ah-bord-out { border-color:#c9a84c; } .aht1 .ah-bord-in { border-color:#e8cc88; } .aht1 .ah-rl,.aht1 .ah-rd { background:#c9a84c; } .aht1 .ah-rt,.aht1 .ah-side,.aht1 .ah-side-r { color:#c9a84c; } .aht1 .ah-eyebrow { color:#8b3a1e; } .aht1 .ah-pre,.aht1 .ah-main { color:#1a1208; } .aht1 .ah-ia { color:#c9a84c; } .aht1 .ah-dl,.aht1 .ah-orn { color:#c9a84c; } .aht1 .ah-sub { color:#1a1208; } .aht1 .ah-bg-geo svg { opacity:0.06; } .aht1 .ah-bg-geo path,.aht1 .ah-bg-geo circle,.aht1 .ah-bg-geo line,.aht1 .ah-bg-geo polygon { stroke:#1a1208; fill:none; }
+    .aht2 .acc-home-frame { background:#1c2434; } .aht2 .ah-bord-out { border-color:#a0b4c8; } .aht2 .ah-bord-in { border-color:rgba(160,180,200,0.3); } .aht2 .ah-rl,.aht2 .ah-rd { background:#a0b4c8; } .aht2 .ah-rt,.aht2 .ah-side,.aht2 .ah-side-r { color:#a0b4c8; } .aht2 .ah-eyebrow { color:#7fb3d3; } .aht2 .ah-pre,.aht2 .ah-main { color:#e8eef4; } .aht2 .ah-ia { color:#7fb3d3; } .aht2 .ah-dl,.aht2 .ah-orn { color:#a0b4c8; } .aht2 .ah-sub { color:#e8eef4; } .aht2 .ah-bg-geo svg { opacity:0.08; } .aht2 .ah-bg-geo path,.aht2 .ah-bg-geo circle,.aht2 .ah-bg-geo line,.aht2 .ah-bg-geo polygon { stroke:#e8eef4; fill:none; }
+    .aht3 .acc-home-frame { background:#2a0e14; } .aht3 .ah-bord-out { border-color:#c8856a; } .aht3 .ah-bord-in { border-color:rgba(200,133,106,0.3); } .aht3 .ah-rl,.aht3 .ah-rd { background:#c8856a; } .aht3 .ah-rt,.aht3 .ah-side,.aht3 .ah-side-r { color:#c8856a; } .aht3 .ah-eyebrow { color:#e8a98a; } .aht3 .ah-pre,.aht3 .ah-main { color:#f5e8df; } .aht3 .ah-ia { color:#e8856a; } .aht3 .ah-dl,.aht3 .ah-orn { color:#c8856a; } .aht3 .ah-sub { color:#f5e8df; } .aht3 .ah-bg-geo svg { opacity:0.07; } .aht3 .ah-bg-geo path,.aht3 .ah-bg-geo circle,.aht3 .ah-bg-geo line,.aht3 .ah-bg-geo polygon { stroke:#f5e8df; fill:none; }
+    .aht4 .acc-home-frame { background:#f0f3ec; } .aht4 .ah-bord-out { border-color:#4a6741; } .aht4 .ah-bord-in { border-color:rgba(74,103,65,0.3); } .aht4 .ah-rl,.aht4 .ah-rd { background:#4a6741; } .aht4 .ah-rt,.aht4 .ah-side,.aht4 .ah-side-r { color:#4a6741; } .aht4 .ah-eyebrow { color:#3a5432; } .aht4 .ah-pre,.aht4 .ah-main { color:#1c2818; } .aht4 .ah-ia { color:#4a6741; } .aht4 .ah-dl,.aht4 .ah-orn { color:#4a6741; } .aht4 .ah-sub { color:#1c2818; } .aht4 .ah-bg-geo svg { opacity:0.07; } .aht4 .ah-bg-geo path,.aht4 .ah-bg-geo circle,.aht4 .ah-bg-geo line,.aht4 .ah-bg-geo polygon { stroke:#1c2818; fill:none; }
+    .aht5 .acc-home-frame { background:#0d0d0d; } .aht5 .ah-bord-out { border-color:#e8e0d0; } .aht5 .ah-bord-in { border-color:rgba(232,224,208,0.2); } .aht5 .ah-rl,.aht5 .ah-rd { background:#e8e0d0; } .aht5 .ah-rt,.aht5 .ah-side,.aht5 .ah-side-r { color:#e8e0d0; } .aht5 .ah-eyebrow { color:#d4c9b0; } .aht5 .ah-pre,.aht5 .ah-main { color:#f4f0e8; } .aht5 .ah-ia { color:#d4c9b0; } .aht5 .ah-dl,.aht5 .ah-orn { color:#e8e0d0; } .aht5 .ah-sub { color:#f4f0e8; } .aht5 .ah-bg-geo svg { opacity:0.07; } .aht5 .ah-bg-geo path,.aht5 .ah-bg-geo circle,.aht5 .ah-bg-geo line,.aht5 .ah-bg-geo polygon { stroke:#f4f0e8; fill:none; }
+    .aht6 .acc-home-frame { background:#f7f0e6; } .aht6 .ah-bord-out { border-color:#b55e2a; } .aht6 .ah-bord-in { border-color:rgba(181,94,42,0.3); } .aht6 .ah-rl,.aht6 .ah-rd { background:#b55e2a; } .aht6 .ah-rt,.aht6 .ah-side,.aht6 .ah-side-r { color:#b55e2a; } .aht6 .ah-eyebrow { color:#8b3a10; } .aht6 .ah-pre,.aht6 .ah-main { color:#2a1a0e; } .aht6 .ah-ia { color:#b55e2a; } .aht6 .ah-dl,.aht6 .ah-orn { color:#b55e2a; } .aht6 .ah-sub { color:#2a1a0e; } .aht6 .ah-bg-geo svg { opacity:0.06; } .aht6 .ah-bg-geo path,.aht6 .ah-bg-geo circle,.aht6 .ah-bg-geo line,.aht6 .ah-bg-geo polygon { stroke:#2a1a0e; fill:none; }
+
+    /* Entrance animation */
+    .acc-home-card.entering .ah-content > * { animation: ahSlideUp 0.65s cubic-bezier(.16,1,.3,1) both; }
+    .acc-home-card.entering .ah-eyebrow { animation-delay:.05s; }
+    .acc-home-card.entering .ah-pre     { animation-delay:.15s; }
+    .acc-home-card.entering .ah-main    { animation-delay:.25s; }
+    .acc-home-card.entering .ah-divider { animation-delay:.35s; }
+    .acc-home-card.entering .ah-sub     { animation-delay:.42s; }
+    @keyframes ahSlideUp { from{opacity:0;transform:translateY(14px)} to{opacity:1;transform:translateY(0)} }
+
+    /* Nav controls */
+    .acc-home-nav { display:flex; align-items:center; gap:16px; margin-top:16px; justify-content:center; }
+    .ah-btn {
+      width:34px; height:34px; border:1px solid rgba(201,168,76,0.35);
+      background:transparent; color:#c9a84c; cursor:pointer; font-size:15px;
+      display:flex; align-items:center; justify-content:center; transition:all 0.2s;
+      font-family:'Cormorant Garamond',serif;
+    }
+    .ah-btn:hover { background:rgba(201,168,76,0.12); border-color:#c9a84c; }
+    .ah-btn:disabled { opacity:0.2; cursor:default; }
+    .ah-dots { display:flex; gap:7px; align-items:center; }
+    .ah-dot { width:5px; height:5px; background:rgba(201,168,76,0.25); cursor:pointer; transition:all 0.3s; transform:rotate(45deg); }
+    .ah-dot.active { background:#c9a84c; transform:rotate(45deg) scale(1.4); }
+    .ah-counter { font-family:'Space Mono',monospace; font-size:10px; letter-spacing:2px; color:rgba(201,168,76,0.45); }
+
+    /* Progress */
+    .acc-home-prog-wrap { height:2px; background:rgba(201,168,76,0.1); margin-top:10px; border-radius:1px; overflow:hidden; }
+    .acc-home-prog { height:100%; background:linear-gradient(90deg,rgba(201,168,76,0.5),#c9a84c); border-radius:1px; width:0%; }
+
+    @media (max-width:600px) { .ah-side,.ah-side-r { display:none; } }
+  </style>
 </head>
 <body>
 
@@ -25,6 +134,7 @@
         <a href="ateliers.html">Ateliers</a>
         <a href="references.html">Références</a>
         <a href="liens.html">Liens</a>
+        <a href="accroches.html">Accroches</a>
       </nav>
       <button class="nav-toggle" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -60,6 +170,161 @@
         <span class="desc">Ateliers pratiques</span>
       </div>
     </div>
+  </div>
+
+  <!-- ACCROCHES CAROUSEL -->
+  <div class="section" style="padding-top: 0;">
+    <div class="section-label">Réflexions</div>
+    <div class="section-title">Accroches de cours</div>
+    <div class="section-subtitle">Une pensée pour amorcer chaque séance</div>
+
+    <div class="acc-home-wrap">
+      <div class="acc-home-slides" id="ah-slides">
+
+        <!-- 1 -->
+        <div class="acc-home-card aht1 entering">
+          <div class="acc-home-frame">
+            <div class="ah-bg-geo"><svg viewBox="0 0 300 300"><circle cx="150" cy="150" r="140" stroke-width="0.5"/><circle cx="150" cy="150" r="100" stroke-width="0.5"/><circle cx="150" cy="150" r="60" stroke-width="0.5"/><line x1="10" y1="150" x2="290" y2="150" stroke-width="0.5"/><line x1="150" y1="10" x2="150" y2="290" stroke-width="0.5"/><line x1="50" y1="50" x2="250" y2="250" stroke-width="0.5"/><line x1="250" y1="50" x2="50" y2="250" stroke-width="0.5"/></svg></div>
+            <div class="ah-bord-out"></div><div class="ah-bord-in"></div>
+            <div class="ah-corner ah-c-tl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#c9a84c" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#c9a84c" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#c9a84c"/></svg></div>
+            <div class="ah-corner ah-c-tr"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#c9a84c" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#c9a84c" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#c9a84c"/></svg></div>
+            <div class="ah-corner ah-c-bl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#c9a84c" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#c9a84c" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#c9a84c"/></svg></div>
+            <div class="ah-corner ah-c-br"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#c9a84c" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#c9a84c" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#c9a84c"/></svg></div>
+            <div class="ah-rule-top"><div class="ah-rl" style="background:#c9a84c"></div><div class="ah-rd" style="background:#c9a84c"></div><span class="ah-rt" style="color:#c9a84c">À partir d'aujourd'hui</span><div class="ah-rd" style="background:#c9a84c"></div><div class="ah-rl" style="background:#c9a84c"></div></div>
+            <div class="ah-side" style="color:#c9a84c">Savoirs · Sens · Société</div>
+            <div class="ah-side ah-side-r" style="color:#c9a84c">Bourdieu · 1979</div>
+            <div class="ah-content">
+              <p class="ah-eyebrow">Bienvenue dans ce cours</p>
+              <p class="ah-pre">Vous êtes désormais</p>
+              <h2 class="ah-main ah-xl">les détenteurs<br>d'un nouveau <span class="ah-ia">capital culturel</span></h2>
+              <div class="ah-divider"><div class="ah-dl l"></div><span class="ah-orn">✦</span><div class="ah-dl r"></div></div>
+              <p class="ah-sub">Ce que vous apprenez ici ne s'efface pas.<br>C'est un bien qui vous appartient.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2 -->
+        <div class="acc-home-card aht2">
+          <div class="acc-home-frame">
+            <div class="ah-bg-geo"><svg viewBox="0 0 300 300"><rect x="20" y="20" width="260" height="260" stroke-width="0.5"/><rect x="60" y="60" width="180" height="180" stroke-width="0.5"/><rect x="100" y="100" width="100" height="100" stroke-width="0.5"/><line x1="20" y1="20" x2="280" y2="280" stroke-width="0.5"/><line x1="280" y1="20" x2="20" y2="280" stroke-width="0.5"/><line x1="150" y1="20" x2="150" y2="280" stroke-width="0.5"/><line x1="20" y1="150" x2="280" y2="150" stroke-width="0.5"/></svg></div>
+            <div class="ah-bord-out"></div><div class="ah-bord-in"></div>
+            <div class="ah-corner ah-c-tl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#a0b4c8" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#a0b4c8" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#a0b4c8"/></svg></div>
+            <div class="ah-corner ah-c-tr"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#a0b4c8" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#a0b4c8" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#a0b4c8"/></svg></div>
+            <div class="ah-corner ah-c-bl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#a0b4c8" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#a0b4c8" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#a0b4c8"/></svg></div>
+            <div class="ah-corner ah-c-br"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#a0b4c8" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#a0b4c8" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#a0b4c8"/></svg></div>
+            <div class="ah-rule-top"><div class="ah-rl" style="background:#a0b4c8"></div><div class="ah-rd" style="background:#a0b4c8"></div><span class="ah-rt" style="color:#a0b4c8">Acte de résistance nº 1</span><div class="ah-rd" style="background:#a0b4c8"></div><div class="ah-rl" style="background:#a0b4c8"></div></div>
+            <div class="ah-side" style="color:#a0b4c8">Penser · Questionner · Agir</div>
+            <div class="ah-side ah-side-r" style="color:#a0b4c8">Freire · 1968</div>
+            <div class="ah-content">
+              <p class="ah-eyebrow" style="color:#7fb3d3">Méditez sur ça</p>
+              <h2 class="ah-main ah-lg" style="color:#e8eef4">Réfléchir est<br><span class="ah-ia" style="color:#7fb3d3">résistance sociale</span></h2>
+              <div class="ah-divider"><div class="ah-dl l" style="color:#a0b4c8"></div><span class="ah-orn" style="color:#a0b4c8">◈</span><div class="ah-dl r" style="color:#a0b4c8"></div></div>
+              <p class="ah-sub" style="color:#e8eef4">Chaque pensée critique est un acte d'insoumission.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3 -->
+        <div class="acc-home-card aht3">
+          <div class="acc-home-frame">
+            <div class="ah-bg-geo"><svg viewBox="0 0 300 300"><polygon points="150,15 285,225 15,225" stroke-width="0.5"/><polygon points="150,60 250,210 50,210" stroke-width="0.5"/><polygon points="150,105 215,200 85,200" stroke-width="0.5"/><circle cx="150" cy="150" r="130" stroke-width="0.5"/></svg></div>
+            <div class="ah-bord-out"></div><div class="ah-bord-in"></div>
+            <div class="ah-corner ah-c-tl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#c8856a" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#c8856a" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#c8856a"/></svg></div>
+            <div class="ah-corner ah-c-tr"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#c8856a" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#c8856a" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#c8856a"/></svg></div>
+            <div class="ah-corner ah-c-bl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#c8856a" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#c8856a" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#c8856a"/></svg></div>
+            <div class="ah-corner ah-c-br"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#c8856a" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#c8856a" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#c8856a"/></svg></div>
+            <div class="ah-rule-top"><div class="ah-rl" style="background:#c8856a"></div><div class="ah-rd" style="background:#c8856a"></div><span class="ah-rt" style="color:#c8856a">Vérité du jour</span><div class="ah-rd" style="background:#c8856a"></div><div class="ah-rl" style="background:#c8856a"></div></div>
+            <div class="ah-side" style="color:#c8856a">Langage · Pouvoir · Identité</div>
+            <div class="ah-side ah-side-r" style="color:#c8856a">Foucault · 1969</div>
+            <div class="ah-content">
+              <p class="ah-eyebrow" style="color:#e8a98a">Une évidence qui dérange</p>
+              <h2 class="ah-main ah-lg" style="color:#f5e8df">Nommer le monde,<br>c'est <span class="ah-ia" style="color:#e8856a">déjà le transformer</span></h2>
+              <div class="ah-divider"><div class="ah-dl l" style="color:#c8856a"></div><span class="ah-orn" style="color:#c8856a">❧</span><div class="ah-dl r" style="color:#c8856a"></div></div>
+              <p class="ah-sub" style="color:#f5e8df">Le vocabulaire que vous acquérez est une forme de pouvoir.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4 -->
+        <div class="acc-home-card aht4">
+          <div class="acc-home-frame">
+            <div class="ah-bg-geo"><svg viewBox="0 0 300 300"><circle cx="150" cy="150" r="130" stroke-width="0.5"/><circle cx="150" cy="150" r="90" stroke-width="0.5"/><circle cx="150" cy="150" r="50" stroke-width="0.5"/><path d="M150 20 Q230 80 230 150 Q230 220 150 280 Q70 220 70 150 Q70 80 150 20Z" stroke-width="0.5"/><line x1="20" y1="150" x2="280" y2="150" stroke-width="0.5"/><line x1="150" y1="20" x2="150" y2="280" stroke-width="0.5"/></svg></div>
+            <div class="ah-bord-out"></div><div class="ah-bord-in"></div>
+            <div class="ah-corner ah-c-tl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#4a6741" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#4a6741" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#4a6741"/></svg></div>
+            <div class="ah-corner ah-c-tr"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#4a6741" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#4a6741" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#4a6741"/></svg></div>
+            <div class="ah-corner ah-c-bl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#4a6741" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#4a6741" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#4a6741"/></svg></div>
+            <div class="ah-corner ah-c-br"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#4a6741" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#4a6741" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#4a6741"/></svg></div>
+            <div class="ah-rule-top"><div class="ah-rl" style="background:#4a6741"></div><div class="ah-rd" style="background:#4a6741"></div><span class="ah-rt" style="color:#4a6741">Ce que ce cours vous donne</span><div class="ah-rd" style="background:#4a6741"></div><div class="ah-rl" style="background:#4a6741"></div></div>
+            <div class="ah-side" style="color:#4a6741">Comprendre · Décoder · Agir</div>
+            <div class="ah-side ah-side-r" style="color:#4a6741">Sen · 1999</div>
+            <div class="ah-content">
+              <p class="ah-eyebrow" style="color:#3a5432">Rappel fondamental</p>
+              <h2 class="ah-main ah-lg" style="color:#1c2818">Le savoir ne se <span class="ah-ia" style="color:#4a6741">possède</span> pas,<br>il se <span class="ah-ia" style="color:#4a6741">pratique</span></h2>
+              <div class="ah-divider"><div class="ah-dl l" style="color:#4a6741"></div><span class="ah-orn" style="color:#4a6741">✿</span><div class="ah-dl r" style="color:#4a6741"></div></div>
+              <p class="ah-sub" style="color:#1c2818">Chaque cours est une pratique, pas une accumulation.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5 -->
+        <div class="acc-home-card aht5">
+          <div class="acc-home-frame">
+            <div class="ah-bg-geo"><svg viewBox="0 0 300 300"><polygon points="150,10 290,290 10,290" stroke-width="0.5"/><polygon points="10,10 290,10 290,290 10,290" stroke-width="0.5"/><circle cx="150" cy="170" r="110" stroke-width="0.5"/><line x1="10" y1="10" x2="290" y2="290" stroke-width="0.5"/><line x1="290" y1="10" x2="10" y2="290" stroke-width="0.5"/></svg></div>
+            <div class="ah-bord-out"></div><div class="ah-bord-in"></div>
+            <div class="ah-corner ah-c-tl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#e8e0d0" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#e8e0d0" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#e8e0d0"/></svg></div>
+            <div class="ah-corner ah-c-tr"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#e8e0d0" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#e8e0d0" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#e8e0d0"/></svg></div>
+            <div class="ah-corner ah-c-bl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#e8e0d0" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#e8e0d0" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#e8e0d0"/></svg></div>
+            <div class="ah-corner ah-c-br"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#e8e0d0" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#e8e0d0" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#e8e0d0"/></svg></div>
+            <div class="ah-rule-top"><div class="ah-rl" style="background:#e8e0d0"></div><div class="ah-rd" style="background:#e8e0d0"></div><span class="ah-rt" style="color:#e8e0d0">Réflexion du jour</span><div class="ah-rd" style="background:#e8e0d0"></div><div class="ah-rl" style="background:#e8e0d0"></div></div>
+            <div class="ah-side" style="color:#e8e0d0">Doute · Rigueur · Liberté</div>
+            <div class="ah-side ah-side-r" style="color:#e8e0d0">Arendt · 1958</div>
+            <div class="ah-content">
+              <p class="ah-eyebrow" style="color:#d4c9b0">Une question pour commencer</p>
+              <h2 class="ah-main ah-lg" style="color:#f4f0e8">Toute <span class="ah-ia" style="color:#d4c9b0">question</span><br>est un acte politique</h2>
+              <div class="ah-divider"><div class="ah-dl l" style="color:#e8e0d0"></div><span class="ah-orn" style="color:#e8e0d0">◆</span><div class="ah-dl r" style="color:#e8e0d0"></div></div>
+              <p class="ah-sub" style="color:#f4f0e8">Interroger, c'est refuser l'ordre comme évidence.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 -->
+        <div class="acc-home-card aht6">
+          <div class="acc-home-frame">
+            <div class="ah-bg-geo"><svg viewBox="0 0 300 300"><circle cx="80" cy="80" r="70" stroke-width="0.5"/><circle cx="220" cy="80" r="70" stroke-width="0.5"/><circle cx="150" cy="200" r="70" stroke-width="0.5"/><circle cx="150" cy="150" r="120" stroke-width="0.5"/></svg></div>
+            <div class="ah-bord-out"></div><div class="ah-bord-in"></div>
+            <div class="ah-corner ah-c-tl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#b55e2a" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#b55e2a" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#b55e2a"/></svg></div>
+            <div class="ah-corner ah-c-tr"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#b55e2a" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#b55e2a" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#b55e2a"/></svg></div>
+            <div class="ah-corner ah-c-bl"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#b55e2a" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#b55e2a" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#b55e2a"/></svg></div>
+            <div class="ah-corner ah-c-br"><svg viewBox="0 0 34 34"><path d="M2 32 L2 2 L32 2" stroke="#b55e2a" stroke-width="1.2"/><path d="M2 17 Q9 9 17 2" stroke="#b55e2a" stroke-width="0.6"/><circle cx="2" cy="2" r="2" fill="#b55e2a"/></svg></div>
+            <div class="ah-rule-top"><div class="ah-rl" style="background:#b55e2a"></div><div class="ah-rd" style="background:#b55e2a"></div><span class="ah-rt" style="color:#b55e2a">Leçon essentielle</span><div class="ah-rd" style="background:#b55e2a"></div><div class="ah-rl" style="background:#b55e2a"></div></div>
+            <div class="ah-side" style="color:#b55e2a">Comprendre · Changer · Construire</div>
+            <div class="ah-side ah-side-r" style="color:#b55e2a">hooks · 1994</div>
+            <div class="ah-content">
+              <p class="ah-eyebrow" style="color:#8b3a10">À retenir pour toujours</p>
+              <h2 class="ah-main ah-lg" style="color:#2a1a0e">Comprendre, c'est <span class="ah-ia" style="color:#b55e2a">déjà</span><br>commencer à changer</h2>
+              <div class="ah-divider"><div class="ah-dl l" style="color:#b55e2a"></div><span class="ah-orn" style="color:#b55e2a">✦</span><div class="ah-dl r" style="color:#b55e2a"></div></div>
+              <p class="ah-sub" style="color:#2a1a0e">La compréhension n'est jamais un acte neutre.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="acc-home-prog-wrap">
+      <div class="acc-home-prog" id="ah-prog"></div>
+    </div>
+
+    <div class="acc-home-nav">
+      <button class="ah-btn" id="ah-prev" disabled>←</button>
+      <div class="ah-dots" id="ah-dots"></div>
+      <span class="ah-counter" id="ah-counter">01 / 06</span>
+      <button class="ah-btn" id="ah-next">→</button>
+    </div>
+
+    <p style="text-align:right; margin-top:14px;">
+      <a href="accroches.html" style="font-family:var(--font-mono); font-size:11px; color:var(--cyan); letter-spacing:0.05em;">Voir toutes les accroches →</a>
+    </p>
   </div>
 
   <!-- DESCRIPTION DU COURS -->
@@ -233,5 +498,65 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script>
+    (function() {
+      const slidesEl = document.getElementById('ah-slides');
+      const cards    = document.querySelectorAll('.acc-home-card');
+      const prev     = document.getElementById('ah-prev');
+      const next     = document.getElementById('ah-next');
+      const dotsEl   = document.getElementById('ah-dots');
+      const counter  = document.getElementById('ah-counter');
+      const progBar  = document.getElementById('ah-prog');
+      const total    = cards.length;
+      const INTERVAL = 6500;
+      let cur = 0, raf;
+
+      for (let i = 0; i < total; i++) {
+        const d = document.createElement('div');
+        d.className = 'ah-dot' + (i === 0 ? ' active' : '');
+        d.addEventListener('click', () => go(i, true));
+        dotsEl.appendChild(d);
+      }
+
+      function go(idx, manual) {
+        cards[cur].classList.remove('entering');
+        cur = idx;
+        slidesEl.style.transform = `translateX(-${cur * 100}%)`;
+        setTimeout(() => cards[cur].classList.add('entering'), 50);
+        prev.disabled = cur === 0;
+        next.disabled = cur === total - 1;
+        document.querySelectorAll('.ah-dot').forEach((d,i) => d.classList.toggle('active', i === cur));
+        counter.textContent = String(cur+1).padStart(2,'0') + ' / ' + String(total).padStart(2,'0');
+        cancelAnimationFrame(raf);
+        startProgress();
+      }
+
+      function startProgress() {
+        let start = null;
+        progBar.style.width = '0%';
+        function frame(ts) {
+          if (!start) start = ts;
+          const pct = Math.min(((ts - start) / INTERVAL) * 100, 100);
+          progBar.style.width = pct + '%';
+          if (pct < 100) { raf = requestAnimationFrame(frame); }
+          else { go((cur + 1) % total, false); }
+        }
+        raf = requestAnimationFrame(frame);
+      }
+
+      prev.addEventListener('click', () => { if (cur > 0) go(cur-1, true); });
+      next.addEventListener('click', () => { if (cur < total-1) go(cur+1, true); });
+
+      let tx = 0;
+      slidesEl.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+      slidesEl.addEventListener('touchend',   e => {
+        const dx = e.changedTouches[0].clientX - tx;
+        if (dx < -40) go((cur+1)%total, true);
+        if (dx >  40) go((cur-1+total)%total, true);
+      }, {passive:true});
+
+      startProgress();
+    })();
+  </script>
 </body>
 </html>
