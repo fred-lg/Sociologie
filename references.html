@@ -566,17 +566,176 @@
   <div class="section">
     <div class="section-label">Repères visuels</div>
     <div class="section-title">Les 3 pères de la sociologie</div>
-    <div class="section-subtitle">Durkheim, Marx, Weber — leurs approches comparées</div>
+    <div class="section-subtitle">3 regards complémentaires pour comprendre les sociétés modernes</div>
 
-    <div class="card" style="padding: 0; overflow: hidden;">
-      <img
-        src="images/3-peres-sociologie.png"
-        alt="Infographie comparant les approches sociologiques de Durkheim, Marx et Weber : concepts clés, méthodes et objets d'étude"
-        style="width: 100%; display: block; height: auto;"
-      >
+    <style>
+      .infog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border: 1px solid var(--border); }
+      .infog-col { padding: 24px 20px; border-right: 1px solid var(--border); }
+      .infog-col:last-child { border-right: none; }
+      .infog-col-head { text-align: center; padding-bottom: 18px; border-bottom: 1px solid var(--border); margin-bottom: 18px; }
+      .infog-col-head .infog-name { font-family: 'Space Mono', monospace; font-size: 15px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 2px; }
+      .infog-col-head .infog-years { font-size: 11px; color: var(--text-3); font-family: var(--font-mono); letter-spacing: 1px; margin-bottom: 6px; }
+      .infog-col-head .infog-bio { font-size: 12px; color: var(--text-3); line-height: 1.5; }
+      .infog-row { margin-bottom: 16px; }
+      .infog-row-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px; opacity: 0.55; }
+      .infog-concept { font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; letter-spacing: 0.5px; margin-bottom: 4px; }
+      .infog-text { font-size: 12px; color: var(--text-2); line-height: 1.55; }
+      .infog-text ul { margin: 4px 0 0 0; padding-left: 14px; }
+      .infog-text li { margin-bottom: 2px; }
+      .infog-works { font-size: 11px; color: var(--text-3); font-style: italic; line-height: 1.6; }
+      .infog-works li { margin-bottom: 1px; }
+      .infog-synth { border: 1px solid var(--border); border-top: none; padding: 18px 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; background: var(--bg-2); }
+      .infog-synth-col { padding: 0 16px; border-right: 1px solid var(--border); }
+      .infog-synth-col:first-child { padding-left: 0; }
+      .infog-synth-col:last-child { border-right: none; }
+      .infog-synth-name { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1px; margin-bottom: 4px; }
+      .infog-synth-text { font-size: 12px; color: var(--text-2); line-height: 1.5; }
+
+      .infog-d .infog-name, .infog-d .infog-concept { color: #22d3ee; }
+      .infog-d .infog-col-head { border-bottom-color: rgba(34,211,238,0.2); }
+      .infog-m .infog-name, .infog-m .infog-concept { color: #fb923c; }
+      .infog-m .infog-col-head { border-bottom-color: rgba(251,146,60,0.2); }
+      .infog-w .infog-name, .infog-w .infog-concept { color: #a78bfa; }
+      .infog-w .infog-col-head { border-bottom-color: rgba(167,139,250,0.2); }
+
+      .infog-d-name { color: #22d3ee; }
+      .infog-m-name { color: #fb923c; }
+      .infog-w-name { color: #a78bfa; }
+
+      @media (max-width: 768px) {
+        .infog-grid { grid-template-columns: 1fr; }
+        .infog-col { border-right: none; border-bottom: 1px solid var(--border); }
+        .infog-col:last-child { border-bottom: none; }
+        .infog-synth { grid-template-columns: 1fr; }
+        .infog-synth-col { padding: 10px 0; border-right: none; border-bottom: 1px solid var(--border); }
+        .infog-synth-col:last-child { border-bottom: none; }
+      }
+    </style>
+
+    <div class="infog-grid">
+
+      <!-- DURKHEIM -->
+      <div class="infog-col infog-d">
+        <div class="infog-col-head">
+          <div class="infog-name">Émile Durkheim</div>
+          <div class="infog-years">1858 – 1917</div>
+          <div class="infog-bio">Sociologue français, professeur à Bordeaux puis à la Sorbonne.</div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur question centrale</div>
+          <div class="infog-text">Comment la cohésion sociale est-elle possible dans les sociétés modernes ?</div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur idée principale</div>
+          <div class="infog-concept">Faits sociaux</div>
+          <div class="infog-text">Les faits sociaux sont des façons d'agir, de penser et de sentir extérieures à l'individu et qui s'imposent à lui.</div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur méthode</div>
+          <div class="infog-text"><ul><li>Privilégie les faits sociaux comme « choses » à étudier.</li><li>Méthode positiviste : observation, comparaison, recherche de lois sociales.</li></ul></div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leurs œuvres majeures</div>
+          <div class="infog-works"><ul><li>De la division du travail social (1893)</li><li>Les Règles de la méthode sociologique (1895)</li><li>Le Suicide (1897)</li></ul></div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur apport à la sociologie</div>
+          <div class="infog-text">Il fonde la sociologie comme science autonome. Il montre que la société n'est pas la somme des individus : elle a ses propres règles.</div>
+        </div>
+        <div class="infog-row" style="margin-bottom:0">
+          <div class="infog-row-label">Pour comprendre aujourd'hui</div>
+          <div class="infog-text">Ses analyses aident à comprendre les mécanismes d'intégration sociale, la solidarité, les normes, l'éducation, la déviance, la religion…</div>
+        </div>
+      </div>
+
+      <!-- MARX -->
+      <div class="infog-col infog-m">
+        <div class="infog-col-head">
+          <div class="infog-name">Karl Marx</div>
+          <div class="infog-years">1818 – 1883</div>
+          <div class="infog-bio">Philosophe, économiste et révolutionnaire allemand.</div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur question centrale</div>
+          <div class="infog-text">Pourquoi les sociétés sont-elles traversées par des conflits et des inégalités ?</div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur idée principale</div>
+          <div class="infog-concept">Lutte des classes</div>
+          <div class="infog-text">L'histoire des sociétés est celle de la lutte entre classes aux intérêts opposés (dominants / dominés).</div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur méthode</div>
+          <div class="infog-text"><ul><li>Analyse critique des rapports de production.</li><li>Méthode matérialiste historique : les conditions matérielles de vie façonnent les idées et les institutions.</li></ul></div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leurs œuvres majeures</div>
+          <div class="infog-works"><ul><li>Le Manifeste du Parti communiste (1848)</li><li>Le Capital (1867)</li><li>Contribution à la critique de l'économie politique (1859)</li></ul></div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur apport à la sociologie</div>
+          <div class="infog-text">Il dévoile les mécanismes d'exploitation économique et d'aliénation. Il relie économie, pouvoir et société.</div>
+        </div>
+        <div class="infog-row" style="margin-bottom:0">
+          <div class="infog-row-label">Pour comprendre aujourd'hui</div>
+          <div class="infog-text">Ses idées éclairent les inégalités économiques, les rapports de pouvoir, le travail, la mondialisation, les crises du capitalisme.</div>
+        </div>
+      </div>
+
+      <!-- WEBER -->
+      <div class="infog-col infog-w">
+        <div class="infog-col-head">
+          <div class="infog-name">Max Weber</div>
+          <div class="infog-years">1864 – 1920</div>
+          <div class="infog-bio">Sociologue, économiste et historien allemand.</div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur question centrale</div>
+          <div class="infog-text">Comment les individus donnent-ils du sens à leurs actions et organisent-ils la société ?</div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur idée principale</div>
+          <div class="infog-concept">Action sociale</div>
+          <div class="infog-text">La sociologie doit comprendre le sens subjectif que les individus donnent à leurs actions.</div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur méthode</div>
+          <div class="infog-text"><ul><li>Compréhension (Verstehen) : saisir le sens des actions.</li><li>Idéaltypes : constructions conceptuelles pour analyser la réalité.</li></ul></div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leurs œuvres majeures</div>
+          <div class="infog-works"><ul><li>L'Éthique protestante et l'esprit du capitalisme (1905)</li><li>Économie et société (1922)</li><li>Le Savant et le Politique (1919)</li></ul></div>
+        </div>
+        <div class="infog-row">
+          <div class="infog-row-label">Leur apport à la sociologie</div>
+          <div class="infog-text">Il relie sens, culture et institutions. Il analyse la rationalisation des sociétés et le rôle des idées dans le changement social.</div>
+        </div>
+        <div class="infog-row" style="margin-bottom:0">
+          <div class="infog-row-label">Pour comprendre aujourd'hui</div>
+          <div class="infog-text">Ses travaux éclairent la bureaucratie, la culture, la religion, le pouvoir, la légitimité, le désenchantement du monde…</div>
+        </div>
+      </div>
+
     </div>
+
+    <!-- SYNTHÈSE -->
+    <div class="infog-synth">
+      <div class="infog-synth-col">
+        <div class="infog-synth-name infog-d-name">Durkheim</div>
+        <div class="infog-synth-text">Met l'accent sur l'<strong>ordre social et la cohésion</strong> — comment la société nous unit.</div>
+      </div>
+      <div class="infog-synth-col">
+        <div class="infog-synth-name infog-m-name">Marx</div>
+        <div class="infog-synth-text">Met l'accent sur le <strong>conflit et les inégalités</strong> — comment la société divise et exploite.</div>
+      </div>
+      <div class="infog-synth-col">
+        <div class="infog-synth-name infog-w-name">Weber</div>
+        <div class="infog-synth-text">Met l'accent sur le <strong>sens et l'action</strong> — comment les individus construisent la société.</div>
+      </div>
+    </div>
+
     <p style="font-size: 12px; color: var(--text-3); margin-top: 10px; font-family: var(--font-mono);">
-      Infographie synthétique · Usage pédagogique
+      Fiche technique et pédagogique · Usage pédagogique
     </p>
   </div>
 
