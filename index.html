@@ -211,6 +211,38 @@
       background: rgba(34, 211, 238, 0.14);
     }
 
+    /* ── VIDEO SECTION ── */
+    .hero-video-wrap {
+      position: relative;
+      width: 100%;
+      border: 1px solid var(--border);
+      background: #000;
+      overflow: hidden;
+    }
+    .hero-video-wrap video {
+      width: 100%;
+      display: block;
+      height: auto;
+    }
+    .hero-video-corner {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      pointer-events: none;
+    }
+    .hero-video-corner::before,
+    .hero-video-corner::after {
+      content: '';
+      position: absolute;
+      background: var(--cyan);
+    }
+    .hero-video-corner::before { width: 100%; height: 1px; top: 0; left: 0; }
+    .hero-video-corner::after  { width: 1px; height: 100%; top: 0; left: 0; }
+    .hvc-tl { top: -1px; left: -1px; }
+    .hvc-tr { top: -1px; right: -1px; transform: scaleX(-1); }
+    .hvc-bl { bottom: -1px; left: -1px; transform: scaleY(-1); }
+    .hvc-br { bottom: -1px; right: -1px; transform: scale(-1,-1); }
+
     /* ── CAROUSEL HOMEPAGE ── */
     .acc-home-wrap {
       position: relative;
@@ -413,6 +445,25 @@
         <a href="devoirs.html" class="fh-btn">Devoirs</a>
         <a href="references.html" class="fh-btn">Références</a>
       </div>
+    </div>
+  </div>
+
+  <!-- VIDEO -->
+  <div class="section" style="padding-top: 0;">
+    <div class="hero-video-wrap">
+      <div class="hero-video-corner hvc-tl"></div>
+      <div class="hero-video-corner hvc-tr"></div>
+      <div class="hero-video-corner hvc-bl"></div>
+      <div class="hero-video-corner hvc-br"></div>
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        controls
+        src="videos/accroche-cours.mp4"
+        aria-label="Vidéo de présentation du cours de sociologie"
+      ></video>
     </div>
   </div>
 
